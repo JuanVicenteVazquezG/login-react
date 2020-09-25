@@ -3,8 +3,8 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
-
+    <div className="container">
+      <h1>Auth</h1>
     </div>
   );
 }
