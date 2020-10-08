@@ -42,11 +42,16 @@ const Login = (props) => {
                 email: res.user.email,
                 uid: res.user.uid
             });
-
+            await db.collection(res.user.uid).add({
+                name: 'Example Task',
+                date: Date.now,
+            });
+            
             setEMail('');
             setPass('');
             setError(null);
             props.history.push('/admin');
+
         }
         catch (err) {
             setError(err.message);
