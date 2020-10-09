@@ -21,7 +21,7 @@ const Admin = (props) => {
            user ? (<>
            <h2>Protected Route, but you can pass</h2>
            {
-               user && (<Firestore/>)
+               user && (<Firestore user={user}/>)
            }
            </>) 
            :
