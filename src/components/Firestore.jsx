@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../config/firebase';
 
+import moment from 'moment';
+
 function Firestore(props) {
 
     const [tasks, setTasks] = useState(null);
@@ -20,7 +22,7 @@ function Firestore(props) {
             }
         };
         obtainData();
-    }, []);
+    }, [props.user.uid]);
 
     const addTask = async (e) => {
         e.preventDefault();
@@ -82,7 +84,9 @@ function Firestore(props) {
                 <div className="col-md-6">
                     <h3>{editionMode ? 'Task Edit' : 'FireBase Crud'}</h3>
                     <ul className="list-group">
-                        {tasks ? tasks.map(task => (<li className="list-group-item" key={task.id}>{task.name}
+                        {tasks ? tasks.map(task => (<li className="list-group-item" key={task.id}>
+                        {console.log(task.res)}
+                        {task.name} - {moment(task.date).format('LLL')}
                             <button
                                 className="btn btn-danger btn-sm float-right"
                                 onClick={() => deleteTask(task.id)}>

@@ -61,7 +61,7 @@ const Login = (props) => {
     const login = React.useCallback(async () => {
         try {
             const res = await auth.signInWithEmailAndPassword(email, pass);
-            console.log(res.user);
+
             setEMail('');
             setPass('');
             setError(null);
